@@ -1,11 +1,10 @@
-import Header from "@/component/Header";
-// import PrimarySearchAppBar from "@/component/Footer";
-
+import Header from "@/component/Header"
+import Footer from "@/component/Footer";
 const Home = () => {
   return (
     <main >
       <Header />
-      {/* <PrimarySearchAppBar /> */}
+<Footer/>
     </main>
   );
 };

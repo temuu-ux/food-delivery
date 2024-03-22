@@ -1,20 +1,22 @@
 import * as React from "react";
+import { useState } from "react";
 import {
   AppBar,
   Box,
   Toolbar,
-  Button,
   Container,
   InputBase,
   styled,
   alpha,
+  Stack,
+  Typography,
 } from "@mui/material";
-import { Pine, Face, Cart, Profile } from "./icon/Pine";
+import { Pine, Cart, Profile } from "../icon/Pine";
 import SearchIcon from "@mui/icons-material/Search";
-
-const pages = ["ХООЛНЫ ЦЭС", "ХҮРГЭЛТИЙН БҮС"];
-const gg = ["Сагс", "Нэвтрэх"];
-
+const gg = [
+  { logo: <Cart width={24} height={24} />, title: "Сагс" },
+  { logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
+];
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -23,7 +25,6 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
 }));
-
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
   height: "100%",
@@ -33,12 +34,10 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
 }));
-
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -47,14 +46,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
-
+console.log("gg", ...gg);
 const Header = () => {
+  const [color, setColor] = useState<number>(1);
+  const pages = [
+    { id: 1, title: "НҮҮР" },
+    { id: 2, title: "ХООЛНЫ ЦЭС" },
+    { id: 3, title: "ХҮРГЭЛТИЙН БҮС" },
+  ];
+  const handlerCol = (id: number) => {
+    setColor(id);
+  };
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#FFF" }}>
-      <Container maxWidth="xl">
+    <AppBar
+      sx={{ backgroundColor: "#FFF", margin: "auto", boxShadow: "none" }}
+    >
+      <Container maxWidth={"xl"}>
         <Toolbar disableGutters>
           <Box
-            gap={4}
+            gap={6}
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
@@ -62,29 +72,30 @@ const Header = () => {
             }}
           >
             <Pine width={40} height={40} />
-            <Face width={42} height={16} />
 
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
+            <Box
+              gap={9}
+              sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            >
+              {pages.map((page, key) => (
+                <Typography
+                  key={key}
+                  fontSize="14px"
+                  fontStyle="normal"
+                  // fontFamily="SF Pro Text"
+                  fontWeight={600}
+                  lineHeight="16px"
+                  onClick={() => handlerCol(page.id)}
                   sx={{
                     my: 2,
-                    color: "#000000",
-                    display: "block",
-                    fontStyle: "normal",
-                    fontFamily: "SF Pro Text",
-                    fontWeight: "700",
-                    lineHeight: "16px",
-                    fontSize: "14px",
+                    color: color === page.id ? "#18BA51" : "#000000",
                   }}
                 >
-                  {page}
-                </Button>
+                  {page.title}
+                </Typography>
               ))}
             </Box>
           </Box>
-
           <Box>
             <AppBar
               position="static"
@@ -93,9 +104,9 @@ const Header = () => {
                 boxShadow: "none",
               }}
             >
-              <Toolbar>
+              <Stack>
                 <Box
-                  gap={4}
+                  gap={6}
                   sx={{
                     flexGrow: 1,
                     display: { xs: "none", md: "flex" },
@@ -112,29 +123,31 @@ const Header = () => {
                       sx={{ border: "black", color: "gray" }}
                     />
                   </Search>
-                  <Cart width={24} height={24} />
-                  <Profile width={18} height={18} />
-                  <Box display={"flex"}>
-                    {gg.map((gg) => (
-                      <Button
-                        key={gg}
-                        sx={{
-                          my: 2,
-                          color: "#000000",
-                          display: "block",
-                          fontStyle: "normal",
-                          fontFamily: "SF Pro Text",
-                          fontWeight: "700",
-                          lineHeight: "16px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        {gg}
-                      </Button>
-                    ))}
-                  </Box>
+
+                  {gg.map((gg, key) => (
+                    <Stack
+                      display={"flex"}
+                      key={key}
+                      sx={{
+                        my: 2,
+                        color: "#000000",
+                        display: "block",
+                        fontStyle: "normal",
+                        fontFamily: "SF Pro Text",
+                        fontWeight: "700",
+                        lineHeight: "16px",
+                        fontSize: "14px",
+                      }}
+                    >
+                      <Box display={"flex"} alignItems={"center"} gap={1}>
+                        {" "}
+                        {gg.logo}
+                        {gg.title}
+                      </Box>
+                    </Stack>
+                  ))}
                 </Box>
-              </Toolbar>
+              </Stack>
             </AppBar>
           </Box>
         </Toolbar>

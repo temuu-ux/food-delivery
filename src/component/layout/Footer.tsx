@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Stack
       display={"flex"}
-      width={"full"}
+      // width={"full"}
       height={"545px"}
       justifyContent={"center"}
       alignItems={"center"}
@@ -18,7 +18,6 @@ const Footer = () => {
         direction={"column"}
         justifyContent={"center"}
         alignItems={"center"}
-        width={"1200px"}
         gap={"40px"}
       >
         <Box>
@@ -40,6 +39,7 @@ const Footer = () => {
           >
             <Link
               href="#"
+              color={"#FFFFFF"}
               underline="always"
               sx={{
                 my: 2,
@@ -49,6 +49,7 @@ const Footer = () => {
               Нүүр
             </Link>
             <Link
+              color={"#FFFFFF"}
               href="#"
               underline="always"
               sx={{
@@ -59,6 +60,7 @@ const Footer = () => {
               Холбоо барих
             </Link>
             <Link
+              color={"#FFFFFF"}
               href="#"
               underline="always"
               sx={{
@@ -69,6 +71,7 @@ const Footer = () => {
               Хоолны цэс
             </Link>
             <Link
+              color={"#FFFFFF"}
               href="#"
               underline="always"
               sx={{
@@ -79,6 +82,7 @@ const Footer = () => {
               Хүргэлтийн бүс
             </Link>
             <Link
+              color={"#FFFFFF"}
               href="#"
               underline="always"
               sx={{

@@ -1,12 +1,15 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "@/component/layout/Layout";
+import { CustomThemeProvider } from "@/utils/CustomTheme";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <CustomThemeProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </CustomThemeProvider>
   );
 };
 export default App;

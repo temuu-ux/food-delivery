@@ -3,13 +3,13 @@ import { useState } from "react";
 import {
   AppBar,
   Box,
-  Toolbar,
   Container,
   InputBase,
   styled,
   alpha,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { Pine, Cart, Profile } from "../icon/Pine";
 import SearchIcon from "@mui/icons-material/Search";
@@ -48,6 +48,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 console.log("gg", ...gg);
 const Header = () => {
+  const theme = useTheme();
   const [color, setColor] = useState<number>(1);
   const pages = [
     { id: 1, title: "НҮҮР" },
@@ -58,13 +59,12 @@ const Header = () => {
     setColor(id);
   };
   return (
-    <AppBar
-      sx={{ backgroundColor: "#FFF", margin: "auto", boxShadow: "none" }}
-    >
+    <AppBar sx={{ backgroundColor: "#FFF", margin: "auto", boxShadow: "none" }}>
       <Container maxWidth={"xl"}>
-        <Toolbar disableGutters>
+        <Box display={"flex"} gap={10}>
           <Box
             gap={6}
+            padding={2}
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
@@ -72,7 +72,6 @@ const Header = () => {
             }}
           >
             <Pine width={40} height={40} />
-
             <Box
               gap={9}
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
@@ -80,15 +79,14 @@ const Header = () => {
               {pages.map((page, key) => (
                 <Typography
                   key={key}
-                  fontSize="14px"
-                  fontStyle="normal"
-                  // fontFamily="SF Pro Text"
-                  fontWeight={600}
-                  lineHeight="16px"
+                  variant="subtitle1"
                   onClick={() => handlerCol(page.id)}
                   sx={{
                     my: 2,
-                    color: color === page.id ? "#18BA51" : "#000000",
+                    color:
+                      color === page.id
+                        ? theme.palette.primary.main
+                        : theme.palette.primary.dark,
                   }}
                 >
                   {page.title}
@@ -96,7 +94,7 @@ const Header = () => {
               ))}
             </Box>
           </Box>
-          <Box>
+          <Box padding={2}>
             <AppBar
               position="static"
               sx={{
@@ -120,7 +118,7 @@ const Header = () => {
                     <StyledInputBase
                       placeholder="Search…"
                       inputProps={{ "aria-label": "search" }}
-                      sx={{ border: "black", color: "gray" }}
+                      sx={{ border: theme.palette.primary.dark, color: "gray" }}
                     />
                   </Search>
 
@@ -130,19 +128,14 @@ const Header = () => {
                       key={key}
                       sx={{
                         my: 2,
-                        color: "#000000",
+                        color: theme.palette.primary.dark,
                         display: "block",
-                        fontStyle: "normal",
-                        fontFamily: "SF Pro Text",
-                        fontWeight: "700",
-                        lineHeight: "16px",
-                        fontSize: "14px",
                       }}
                     >
                       <Box display={"flex"} alignItems={"center"} gap={1}>
                         {" "}
                         {gg.logo}
-                        {gg.title}
+                        <Typography variant="subtitle1"> {gg.title}</Typography>
                       </Box>
                     </Stack>
                   ))}
@@ -150,7 +143,7 @@ const Header = () => {
               </Stack>
             </AppBar>
           </Box>
-        </Toolbar>
+        </Box>
       </Container>
     </AppBar>
   );

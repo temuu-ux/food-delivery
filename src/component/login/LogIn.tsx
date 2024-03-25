@@ -1,4 +1,4 @@
-import { Box, Stack, Container, Typography, Button } from "@mui/material";
+import { Box, Stack, Typography, Button, Link } from "@mui/material";
 import * as React from "react";
 import {
   FormControl,
@@ -23,79 +23,74 @@ const LogIn = () => {
     event.preventDefault();
   };
   return (
-    <Container
-      sx={{
-        width: "448px",
-        height: "649px",
-        paddingTop: "100px",
-        justifyContent: "center",
-      }}
+    <Stack
+      justifyContent={"center"}
+      alignItems={"center"}
+      gap={4}
+      mt={15}
+      height={549}
     >
-      <Stack
-        width="384px"
-        justifyContent={"center"}
-        alignItems={"center"}
-        gap={4}
-      >
-        <Box>Нэвтрэх</Box>
-        <Stack gap={2}>
+      <Box>Нэвтрэх</Box>
+      <Stack gap={2}>
+        <FormControl defaultValue="" required>
+          <Label>Имэйл </Label>
+
+          <StyledInput placeholder="Имэйл хаягаа оруулна уу" />
+        </FormControl>
+
+        <Stack>
           <FormControl defaultValue="" required>
-            <Label>Имэйл </Label>
-
-            <StyledInput placeholder="Имэйл хаягаа оруулна уу" />
+            <Label>Нууц үг</Label>
+            <StyledInput
+              placeholder="Нууц үг"
+              type={showPassword ? "text" : "password"}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
           </FormControl>
-
-          <Stack>
-            <FormControl defaultValue="" required>
-              <Label>Нууц үг</Label>
-              <StyledInput
-                placeholder="Нууц үг"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            <Stack alignItems={"end"}>
-              <Typography
-                color={"gray"}
-                fontWeight={"400"}
-                lineHeight={"normal"}
-                fontSize={"14px"}
-              >
-                Нууц үг сэргээх
-              </Typography>
-            </Stack>
+          <Stack alignItems={"end"}>
+            <Typography
+              color={"gray"}
+              fontWeight={"400"}
+              lineHeight={"normal"}
+              fontSize={"14px"}
+            >
+              Нууц үг сэргээх
+            </Typography>
           </Stack>
         </Stack>
-        <Stack width={"324px"} gap={4}>
+      </Stack>
+      <Stack width={"324px"} gap={4}>
+        <Link href="/dash-home" underline="none">
+          {" "}
           <Stack bgcolor={"#18BA51"} borderRadius={"4px"}>
             <Button>
               <Typography color={"white"}>Нэвтрэх</Typography>
             </Button>
           </Stack>
-          <Typography textAlign={"center"}>Эсвэл</Typography>
-          <Stack
-            bgcolor={"#FFFFFF"}
-            borderRadius={"4px"}
-            border={"1px #18BA51 solid"}
-          >
-            <Button>
-              <Typography color={"#272727"}>Бүртгүүлэх</Typography>
-            </Button>
-          </Stack>
+        </Link>
+        <Typography textAlign={"center"}>Эсвэл</Typography>
+        <Stack
+          bgcolor={"#FFFFFF"}
+          borderRadius={"4px"}
+          border={"1px #18BA51 solid"}
+        >
+          <Button>
+            <Typography color={"#272727"}>Бүртгүүлэх</Typography>
+          </Button>
         </Stack>
       </Stack>
-    </Container>
+    </Stack>
   );
 };
 const StyledInput = styled(Input)(

@@ -1,0 +1,46 @@
+import { ThemeProvider, createTheme } from "@mui/material";
+
+import { ReactNode } from "react";
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 300,
+      md: 660,
+      lg: 1258,
+      xl: 1440,
+    },
+  },
+  palette: {
+    primary: {
+      main: "#18BA51",
+      dark: "#000000",
+      light: "#FFFFFF",
+    },
+  },
+  typography: {
+    subtitle1: {
+      fontSize: 14,
+      fontStyle: "normal",
+      fontWeight: 700,
+    },
+    h1: {
+      fontSize: 55,
+      fontStyle: "normal",
+      fontWeight: 600,
+      // fontFamily: "Poppins",
+    },
+    h2: {
+      fontSize: 22,
+      fontStyle: "normal",
+      fontWeight: 500,
+      // lineHeight:24,
+      // fontFamily: "Comfortaa",
+    },
+  },
+});
+
+export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};

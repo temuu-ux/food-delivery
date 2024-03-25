@@ -29,14 +29,21 @@ const theme = createTheme({
       fontSize: 55,
       fontStyle: "normal",
       fontWeight: 600,
-      // fontFamily: "Poppins",
     },
     h2: {
       fontSize: 22,
       fontStyle: "normal",
       fontWeight: 500,
-      // lineHeight:24,
-      // fontFamily: "Comfortaa",
+    },
+    h3: {
+      fontSize: 18,
+      fontStyle: "normal",
+      fontWeight: 700,
+    },
+    h4: {
+      fontSize: 14,
+      fontStyle: "normal",
+      fontWeight: 400,
     },
   },
 });

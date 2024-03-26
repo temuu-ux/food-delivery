@@ -5,27 +5,29 @@ import { BoardData } from "@/utils/HomeData";
 const Board = () => {
   return (
     <Container>
-      <Stack direction="column" spacing={2}>
+      <Stack display={"flex"} direction={"row"} justifyContent={"space-between"}>
         {BoardData.map((item, index) => (
           <Stack
-            key={index} 
+            key={index}
+            gap={1}
             width={264}
             height={155}
             border="1px #D6D8DB solid"
-            borderRadius={15}
+            borderRadius={4}
             boxShadow={10}
           >
-            <Stack p={4}>
-              <div
-                style={{
-                  width: "30px",
-                  height: "30px",
-                  backgroundImage: `url(${item.img})`,
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }}
-              ></div>
-            </Stack>
+            <Stack
+              display={"flex"}
+              alignItems={"center"}
+             m={4}
+              width={"30px"}
+              height={"30px"}
+              sx={{
+                backgroundImage: `${item.img}`,
+                backgroundSize: "100%",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></Stack>
             <Stack px={2}>
               <Typography variant="h3" color="#272727">
                 {item.title}

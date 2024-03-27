@@ -32,7 +32,7 @@ const Footer = () => {
             </Box>
           </Stack>
           <Box
-            gap={4}
+            gap={18}
             display={"flex"}
             textAlign={"center"}
             alignItems={"center"}
@@ -69,6 +69,17 @@ const Footer = () => {
               }}
             >
               Хоолны цэс
+            </Link>
+            <Link
+              color={"#FFFFFF"}
+              href="#"
+              underline="always"
+              sx={{
+                my: 2,
+                color: "#FFFFFF",
+              }}
+            >
+              Үйлчилгээний нөхцөл
             </Link>
             <Link
               color={"#FFFFFF"}

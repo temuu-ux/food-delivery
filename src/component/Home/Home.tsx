@@ -5,7 +5,7 @@ import Menu from "./Menu"
 
 export const Home = () => {
   return (
-    <Stack>
+    <Stack gap={10}>
       <Desktop />
       <Board />
       <Menu/>

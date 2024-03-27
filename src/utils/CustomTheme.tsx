@@ -18,10 +18,18 @@ const theme = createTheme({
       dark: "#000000",
       light: "#FFFFFF",
     },
+    secondary: {
+      main: "#272727",
+    },
   },
   typography: {
     subtitle1: {
       fontSize: 14,
+      fontStyle: "normal",
+      fontWeight: 700,
+    },
+    h5: {
+      fontSize: 22,
       fontStyle: "normal",
       fontWeight: 700,
     },
@@ -45,6 +53,11 @@ const theme = createTheme({
       fontStyle: "normal",
       fontWeight: 400,
     },
+    h6:{
+      fontSize: 18,
+      fontStyle: "normal",
+      fontWeight: 600,
+    }
   },
 });
 

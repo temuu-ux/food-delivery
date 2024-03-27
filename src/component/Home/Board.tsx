@@ -1,11 +1,16 @@
 // import React from "react";
-import { Container, Stack, Typography } from "@mui/material";
+import { Container, Stack, Typography, useTheme } from "@mui/material";
 import { BoardData } from "@/utils/HomeData";
 
 const Board = () => {
+  const theme = useTheme();
   return (
     <Container>
-      <Stack display={"flex"} direction={"row"} justifyContent={"space-between"}>
+      <Stack
+        display={"flex"}
+        direction={"row"}
+        justifyContent={"space-between"}
+      >
         {BoardData.map((item, index) => (
           <Stack
             key={index}
@@ -14,12 +19,12 @@ const Board = () => {
             height={155}
             border="1px #D6D8DB solid"
             borderRadius={4}
-            boxShadow={10}
+            boxShadow={"4"}
           >
             <Stack
               display={"flex"}
               alignItems={"center"}
-             m={4}
+              m={4}
               width={"30px"}
               height={"30px"}
               sx={{
@@ -29,10 +34,14 @@ const Board = () => {
               }}
             ></Stack>
             <Stack px={2}>
-              <Typography variant="h3" color="#272727">
+              <Typography variant="h3" color={theme.palette.secondary.main}>
                 {item.title}
               </Typography>
-              <Typography variant="h4" color="#272727" sx={{ opacity: 0.5 }}>
+              <Typography
+                variant="h4"
+                color={theme.palette.secondary.main}
+                sx={{ opacity: 0.5 }}
+              >
                 Захиалга бэлтгэлийн явцыг хянах
               </Typography>
             </Stack>

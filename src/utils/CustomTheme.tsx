@@ -20,11 +20,18 @@ const theme = createTheme({
     },
     secondary: {
       main: "#272727",
+      dark: "#767676",
+      light:"#F6F6F6"
     },
   },
   typography: {
     subtitle1: {
       fontSize: 14,
+      fontStyle: "normal",
+      fontWeight: 700,
+    },
+    subtitle2: {
+      fontSize: 28,
       fontStyle: "normal",
       fontWeight: 700,
     },
@@ -53,11 +60,11 @@ const theme = createTheme({
       fontStyle: "normal",
       fontWeight: 400,
     },
-    h6:{
+    h6: {
       fontSize: 18,
       fontStyle: "normal",
       fontWeight: 600,
-    }
+    },
   },
 });
 

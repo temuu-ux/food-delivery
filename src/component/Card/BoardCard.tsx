@@ -17,7 +17,7 @@ interface data {
 }
 
 const BoardCard = ({ data }: { data: data }) => {
-  console.log("data", data);
+  // console.log("data", data);
 
   // const theme = useTheme();
   return (
@@ -27,7 +27,7 @@ const BoardCard = ({ data }: { data: data }) => {
           component="img"
           width="282"
           image={data.imagePath}
-          alt="green iguana"
+          alt={data.foodName}
           sx={{ height: "160px", borderRadius: "16px" }}
         />
         {data.sale > 0 ? (

@@ -1,4 +1,5 @@
 import { Button, Container, Stack, Typography, useTheme } from "@mui/material";
+
 import * as React from "react";
 
 import CardModal from "../Card/CardModal";
@@ -7,8 +8,9 @@ import FoodData from "../../utils/FoodData.json";
 
 const Menu = ({ category }: { category: string }) => {
   const theme = useTheme();
-  console.log("foodData", FoodData);
-  console.log("category", category);
+  
+  // console.log("foodData", FoodData);
+  // console.log("category", category);
 
   return (
     <Stack display={"flex"} gap={5}>

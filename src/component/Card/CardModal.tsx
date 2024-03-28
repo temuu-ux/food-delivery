@@ -48,7 +48,7 @@ const CardModal = ({ data }: { data: data }) => {
             sx={{ width: "50%", height: "500px" }}
             component="img"
             image={data.imagePath}
-            alt="green iguana"
+            alt={data.foodName}
           />
           <Stack gap={4} width={"384px"}>
             <Stack>

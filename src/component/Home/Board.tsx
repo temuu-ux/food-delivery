@@ -5,7 +5,7 @@ import { BoardData } from "@/utils/HomeData";
 const Board = () => {
   const theme = useTheme();
   return (
-    <Container>
+    <Container sx={{ justifyContent: "space-between" }}>
       <Stack
         display={"flex"}
         direction={"row"}

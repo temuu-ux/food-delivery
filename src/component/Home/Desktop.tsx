@@ -59,7 +59,7 @@ const Desktop = () => {
           <Box
             position={"absolute"}
             bottom={170}
-            left={310}
+            left={345}
             width={300}
             height={300}
             zIndex={1}

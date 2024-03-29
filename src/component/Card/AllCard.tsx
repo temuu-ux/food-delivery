@@ -1,9 +1,10 @@
-import { Stack, Container, Button, Box, Typography } from "@mui/material";
+import { Stack, Container, Button, Typography, useTheme } from "@mui/material";
 import CardModal from "./CardModal";
 import { useState } from "react";
 import FoodData from "../../utils/FoodData.json";
 
-const AllCard = () => {
+export const AllCard = () => {
+  const theme = useTheme();
   const [menu, setMenu] = useState("Breakfast");
   const titleMenu = [
     "Main Dish",
@@ -11,28 +12,51 @@ const AllCard = () => {
     "Breakfast",
     "Dessert",
   ];
+
+  // const buttonStyle = (category: string) => ({
+  //   width: "280px",
+
+  // });
+
   return (
-    <Stack>
-      <Container>
+    <Container>
+      <Stack direction={"row"}>
         {titleMenu.map((category, index) => {
           return (
-            <Box key={index}>
+            <Stack
+              my={"32px"}
+              direction={"row"}
+              justifyContent={"space-between"}
+              width={"100%"}
+              key={index}
+            >
               <Button
+                sx={{
+                  width: "280px",
+                  hover: "none",
+                  bgcolor:
+                    menu === category
+                      ? theme.palette.primary.main
+                      : theme.palette.primary.light,
+                  color:
+                    menu === category
+                      ? theme.palette.primary.light
+                      : theme.palette.primary.dark,
+                }}
                 onClick={() => setMenu(category)}
-                sx={{ display: "flex", direction: "row" }}
               >
                 <Typography>{category}</Typography>
               </Button>
-            </Box>
+            </Stack>
           );
         })}
-        <Stack direction={"row"} gap={3} flexWrap={"wrap"}>
-          {FoodData.filter((e) => e.category == menu).map((data, index) => (
-            <CardModal data={data} key={index} />
-          ))}
-        </Stack>
-      </Container>
-    </Stack>
+      </Stack>
+      <Stack direction={"row"} gap={3} flexWrap={"wrap"}>
+        {FoodData.filter((e) => e.category == menu).map((data, index) => (
+          <CardModal data={data} key={index} />
+        ))}
+      </Stack>
+    </Container>
   );
 };
-export default AllCard;
+// export default AllCard;

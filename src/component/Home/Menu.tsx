@@ -1,14 +1,14 @@
 import { Button, Container, Stack, Typography, useTheme } from "@mui/material";
-
+import Link from "next/link";
 import * as React from "react";
-
 import CardModal from "../Card/CardModal";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import FoodData from "../../utils/FoodData.json";
+// import FoodData from "../../utils/FoodData.json";
+import { useFoodData } from "@/context/Context";
 
 const Menu = ({ category }: { category: string }) => {
   const theme = useTheme();
-  
+  const { foodData } = useFoodData();
   // console.log("foodData", FoodData);
   // console.log("category", category);
 
@@ -25,11 +25,14 @@ const Menu = ({ category }: { category: string }) => {
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <Button>
-                <Typography variant="h4" textAlign={"center"}>
-                  Бүгдийг харах
-                </Typography>
-              </Button>
+              <Link href={"/all-card-menu"}>
+                <Button>
+                  <Typography variant="h4" textAlign={"center"}>
+                    Бүгдийг харах
+                  </Typography>
+                </Button>
+              </Link>
+
               <ChevronRightIcon />
             </Stack>
           </Stack>
@@ -37,7 +40,8 @@ const Menu = ({ category }: { category: string }) => {
           {category === "Sale" ? (
             <Stack direction={"row"} gap={3}>
               {" "}
-              {FoodData.filter((e) => e.sale > 0)
+              {foodData
+                .filter((e) => e.sale > 0)
                 .slice(0, 4)
                 .map((data, index) => (
                   <CardModal key={index} data={data} />
@@ -46,7 +50,8 @@ const Menu = ({ category }: { category: string }) => {
           ) : (
             <Stack direction={"row"} gap={3}>
               {" "}
-              {FoodData.filter((e) => e.category == category)
+              {foodData
+                .filter((e) => e.category == category)
                 .filter((e) => e.sale == 0)
                 .slice(0, 4)
                 .map((data, index) => (

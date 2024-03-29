@@ -2,7 +2,6 @@ import { Stack } from "@mui/material";
 import Desktop from "./Desktop";
 import Board from "./Board";
 import Menu from "./Menu";
-import AllCard from "../Card/AllCard";
 
 export const Home = () => {
   return (
@@ -16,7 +15,6 @@ export const Home = () => {
         <Menu category="Breakfast" />
         <Menu category="Dessert" />
       </Stack>
-      <AllCard/>
     </Stack>
   );
 };

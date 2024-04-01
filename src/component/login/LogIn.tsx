@@ -85,9 +85,12 @@ const LogIn = () => {
           borderRadius={"4px"}
           border={"1px #18BA51 solid"}
         >
-          <Button>
-            <Typography color={"#272727"}>Бүртгүүлэх</Typography>
-          </Button>
+          <Link href={"/sign"}>
+            {" "}
+            <Button>
+              <Typography color={"#272727"}>Бүртгүүлэх</Typography>
+            </Button>
+          </Link>
         </Stack>
       </Stack>
     </Stack>

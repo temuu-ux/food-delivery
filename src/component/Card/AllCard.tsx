@@ -1,9 +1,11 @@
 import { Stack, Container, Button, Typography, useTheme } from "@mui/material";
 import CardModal from "./CardModal";
 import { useState } from "react";
-import FoodData from "../../utils/FoodData.json";
+// import FoodData from "../../utils/FoodData.json";
+import { useFoodData } from "@/context/Context";
 
 export const AllCard = () => {
+  const { foodData } = useFoodData();
   const theme = useTheme();
   const [menu, setMenu] = useState("Breakfast");
   const titleMenu = [
@@ -52,9 +54,11 @@ export const AllCard = () => {
         })}
       </Stack>
       <Stack direction={"row"} gap={3} flexWrap={"wrap"}>
-        {FoodData.filter((e) => e.category == menu).map((data, index) => (
-          <CardModal data={data} key={index} />
-        ))}
+        {foodData
+          .filter((e) => e.category == menu)
+          .map((data, index) => (
+            <CardModal data={data} key={index} />
+          ))}
       </Stack>
     </Container>
   );

@@ -4,7 +4,6 @@ import { Stack, Box, Button, Typography } from "@mui/material";
 import { Modal, CardMedia, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
 interface data {
   id: number;
   category: string;
@@ -31,7 +30,10 @@ const CardModal = ({ data }: { data: data }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [countBuy, setCountBuy] = React.useState(1);
+  const addHandler = () => {
+    setCountBuy(countBuy + 1);
+  };
   const theme = useTheme();
   return (
     <Stack>
@@ -82,8 +84,7 @@ const CardModal = ({ data }: { data: data }) => {
                   color: theme.palette.secondary.dark,
                   backgroundColor: theme.palette.secondary.light,
                 }}
-              >
-                {data.ingredients.map((e) => {
+              > {data.ingredients.map((e) => {
                   return e + "," + " ";
                 })}
               </Typography>
@@ -105,8 +106,8 @@ const CardModal = ({ data }: { data: data }) => {
                   borderRadius: "10px",
                 }}
               >
-                {" "}
                 <Button
+                  onClick={() => addHandler()}
                   sx={{
                     color: theme.palette.primary.light,
                   }}
@@ -121,7 +122,7 @@ const CardModal = ({ data }: { data: data }) => {
                 alignItems={"center"}
                 justifyContent={"center"}
               >
-                0
+                {countBuy}
               </Typography>
               <Box
                 width={"45px"}
@@ -134,7 +135,6 @@ const CardModal = ({ data }: { data: data }) => {
                   borderRadius: "10px",
                 }}
               >
-                {" "}
                 <Button
                   sx={{
                     color: theme.palette.primary.light,
@@ -152,7 +152,6 @@ const CardModal = ({ data }: { data: data }) => {
                 backgroundColor: theme.palette.primary.main,
               }}
             >
-              {" "}
               <Button
                 sx={{
                   color: theme.palette.primary.light,

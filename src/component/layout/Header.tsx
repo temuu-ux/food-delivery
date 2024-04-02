@@ -4,56 +4,27 @@ import {
   AppBar,
   Box,
   Container,
-  InputBase,
-  styled,
-  alpha,
   Stack,
   Typography,
   useTheme,
+  Link,
 } from "@mui/material";
 import { Pine, Cart, Profile } from "../icon/Pine";
-import SearchIcon from "@mui/icons-material/Search";
+import { Search } from "./Search";
+
 const gg = [
-  { logo: <Cart width={24} height={24} />, title: "Сагс" },
-  { logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
+  { id: 5, logo: <Cart width={24} height={24} />, title: "Сагс" },
+  { id: 6, logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
 ];
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-}));
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
-console.log("gg", ...gg);
+
+// console.log("gg", ...gg);
 const Header = () => {
   const theme = useTheme();
   const [color, setColor] = useState<number>(1);
   const pages = [
-    { id: 1, title: "НҮҮР" },
-    { id: 2, title: "ХООЛНЫ ЦЭС" },
-    { id: 3, title: "ХҮРГЭЛТИЙН БҮС" },
+    { id: 1, title: "НҮҮР", link: "/dash-home" },
+    { id: 2, title: "ХООЛНЫ ЦЭС", link: "/all-card-menu" },
+    { id: 3, title: "ХҮРГЭЛТИЙН БҮС", link: "#" },
   ];
   const handlerCol = (id: number) => {
     setColor(id);
@@ -77,20 +48,22 @@ const Header = () => {
               sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             >
               {pages.map((page, key) => (
-                <Typography
-                  key={key}
-                  variant="subtitle1"
-                  onClick={() => handlerCol(page.id)}
-                  sx={{
-                    my: 2,
-                    color:
-                      color === page.id
-                        ? theme.palette.primary.main
-                        : theme.palette.primary.dark,
-                  }}
-                >
-                  {page.title}
-                </Typography>
+                <Link href={page.link} key={key} underline="none">
+                  <Typography
+                    variant="subtitle1"
+                    onClick={() => handlerCol(page.id)}
+                    sx={{
+                      my: 2,
+                      color:
+                        color === page.id
+                          ? theme.palette.primary.main
+                          : theme.palette.primary.dark,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {page.title}
+                  </Typography>
+                </Link>
               ))}
             </Box>
           </Box>
@@ -111,17 +84,7 @@ const Header = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Search sx={{ border: "1px solid gray" }}>
-                    <SearchIconWrapper>
-                      <SearchIcon sx={{ color: "gray" }} />
-                    </SearchIconWrapper>
-                    <StyledInputBase
-                      placeholder="Search…"
-                      inputProps={{ "aria-label": "search" }}
-                      sx={{ border: theme.palette.primary.dark, color: "gray" }}
-                    />
-                  </Search>
-
+                  <Search />
                   {gg.map((gg, key) => (
                     <Stack
                       display={"flex"}
@@ -132,7 +95,20 @@ const Header = () => {
                         display: "block",
                       }}
                     >
-                      <Box display={"flex"} alignItems={"center"} gap={1}>
+                      <Box
+                        display={"flex"}
+                        alignItems={"center"}
+                        gap={1}
+                        onClick={() => handlerCol(gg.id)}
+                        sx={{
+                          my: 2,
+                          color:
+                            color === gg.id
+                              ? theme.palette.primary.main
+                              : theme.palette.primary.dark,
+                          cursor: "pointer",
+                        }}
+                      >
                         {" "}
                         {gg.logo}
                         <Typography variant="subtitle1"> {gg.title}</Typography>

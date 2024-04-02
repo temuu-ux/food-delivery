@@ -21,7 +21,7 @@ const theme = createTheme({
     secondary: {
       main: "#272727",
       dark: "#767676",
-      light:"#F6F6F6"
+      light: "#F6F6F6",
     },
   },
   typography: {
@@ -34,6 +34,11 @@ const theme = createTheme({
       fontSize: 28,
       fontStyle: "normal",
       fontWeight: 700,
+    },
+    body1: {
+      fontSize: 20,
+      fontStyle: "normal",
+      fontWeight: 900,
     },
     h5: {
       fontSize: 22,

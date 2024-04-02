@@ -18,7 +18,6 @@ interface data {
 
 const BoardCard = ({ data }: { data: data }) => {
   // console.log("data", data);
-
   // const theme = useTheme();
   return (
     <Card sx={{ width: 282, boxShadow: 0 }}>

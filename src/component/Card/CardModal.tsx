@@ -4,7 +4,6 @@ import { Stack, Box, Button, Typography } from "@mui/material";
 import { Modal, CardMedia, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
 interface data {
   id: number;
   category: string;
@@ -27,10 +26,29 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+const box = {
+  width: "45px",
+  display: "flex",
+  height: "40px",
+  justifyContent: "center",
+  backgroundColor: "#18BA51",
+  color: "#FFFFFF",
+  borderRadius: "10px",
+};
 const CardModal = ({ data }: { data: data }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [countBuy, setCountBuy] = React.useState(1);
+
+  const addHandler = () => {
+    setCountBuy(countBuy + 1);
+  };
+  const minusHandler = () => {
+    const count = countBuy - 1;
+    count < 1 ? setCountBuy(1) : setCountBuy(count);
+  };
 
   const theme = useTheme();
   return (
@@ -53,10 +71,7 @@ const CardModal = ({ data }: { data: data }) => {
           />
           <Stack gap={4} width={"384px"}>
             <Stack>
-              <Typography
-                id="modal-modal-description"
-                sx={{ mt: 4, fontSize: theme.typography.subtitle2 }}
-              >
+              <Typography sx={{ mt: 4, fontSize: theme.typography.subtitle2 }}>
                 {data.foodName}
               </Typography>
               <Typography
@@ -65,7 +80,9 @@ const CardModal = ({ data }: { data: data }) => {
                   color: theme.palette.primary.main,
                 }}
               >
-                {data.price}
+                {data.sale == 0
+                  ? data.price
+                  : data.price - (data.price * data.sale) / 100}
               </Typography>
             </Stack>
             <Stack gap={3}>
@@ -76,8 +93,7 @@ const CardModal = ({ data }: { data: data }) => {
               <Typography
                 height={"54px"}
                 borderRadius={2}
-                px={2}
-                py={1}
+                p={1}
                 sx={{
                   color: theme.palette.secondary.dark,
                   backgroundColor: theme.palette.secondary.light,
@@ -94,19 +110,10 @@ const CardModal = ({ data }: { data: data }) => {
               </Typography>
             </Stack>
             <Stack direction={"row"} gap={5}>
-              <Box
-                width={"45px"}
-                display={"flex"}
-                height={"40px"}
-                justifyContent={"center"}
-                sx={{
-                  backgroundColor: theme.palette.primary.main,
-                  color: theme.palette.primary.light,
-                  borderRadius: "10px",
-                }}
-              >
+              <Box sx={box}>
                 {" "}
                 <Button
+                  onClick={minusHandler}
                   sx={{
                     color: theme.palette.primary.light,
                   }}
@@ -121,21 +128,12 @@ const CardModal = ({ data }: { data: data }) => {
                 alignItems={"center"}
                 justifyContent={"center"}
               >
-                0
+                {countBuy}
               </Typography>
-              <Box
-                width={"45px"}
-                display={"flex"}
-                height={"40px"}
-                justifyContent={"center"}
-                sx={{
-                  backgroundColor: theme.palette.primary.main,
-                  color: theme.palette.primary.light,
-                  borderRadius: "10px",
-                }}
-              >
+              <Box sx={box}>
                 {" "}
                 <Button
+                  onClick={() => addHandler()}
                   sx={{
                     color: theme.palette.primary.light,
                   }}
@@ -148,18 +146,9 @@ const CardModal = ({ data }: { data: data }) => {
               display={"flex"}
               justifyContent={"center"}
               borderRadius={1}
-              sx={{
-                backgroundColor: theme.palette.primary.main,
-              }}
+              sx={{ backgroundColor: "#18BA51" }}
             >
-              {" "}
-              <Button
-                sx={{
-                  color: theme.palette.primary.light,
-                }}
-              >
-                Сагслах
-              </Button>
+              <Button sx={{ color: "#FFFFFF" }}>Сагслах</Button>
             </Box>
           </Stack>
         </Box>

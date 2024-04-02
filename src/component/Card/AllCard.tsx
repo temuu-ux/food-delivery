@@ -22,33 +22,34 @@ export const AllCard = () => {
 
   return (
     <Container>
-      <Stack direction={"row"}>
+      <Stack direction={"row"} pt={4}>
         {titleMenu.map((category, index) => {
           return (
-            <Stack
-              my={"32px"}
-              direction={"row"}
-              justifyContent={"space-between"}
-              width={"100%"}
-              key={index}
-            >
-              <Button
+            <Stack width={"100%"} my={"32px"} key={index}>
+              <Stack
+                width={"250px"}
+                alignItems={"center"}
+                textAlign={"center"}
+                borderRadius={2}
                 sx={{
-                  width: "280px",
-                  hover: "none",
                   bgcolor:
                     menu === category
                       ? theme.palette.primary.main
                       : theme.palette.primary.light,
-                  color:
-                    menu === category
-                      ? theme.palette.primary.light
-                      : theme.palette.primary.dark,
                 }}
-                onClick={() => setMenu(category)}
               >
-                <Typography>{category}</Typography>
-              </Button>
+                <Button
+                  sx={{
+                    color:
+                      menu === category
+                        ? theme.palette.primary.light
+                        : theme.palette.primary.dark,
+                  }}
+                  onClick={() => setMenu(category)}
+                >
+                  <Typography>{category}</Typography>
+                </Button>
+              </Stack>
             </Stack>
           );
         })}

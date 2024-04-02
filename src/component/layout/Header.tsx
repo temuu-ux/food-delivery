@@ -11,9 +11,18 @@ import {
 } from "@mui/material";
 import { Pine, Cart, Profile } from "../icon/Pine";
 import { Search } from "./Search";
+import { TemporaryDrawer } from "../drawer/TemporaryDrawer";
 
 const gg = [
-  { id: 5, logo: <Cart width={24} height={24} />, title: "Сагс" },
+  {
+    id: 5,
+    logo: <Cart width={24} height={24} />,
+    title: (
+      <>
+        <TemporaryDrawer />{" "}
+      </>
+    ),
+  },
   { id: 6, logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
 ];
 
@@ -31,11 +40,10 @@ const Header = () => {
   };
   return (
     <AppBar sx={{ backgroundColor: "#FFF", margin: "auto", boxShadow: "none" }}>
-      <Container maxWidth={"xl"}>
-        <Box display={"flex"} gap={10}>
+      <Container>
+        <Stack direction={"row"} justifyContent={"space-between"} gap={10}>
           <Box
             gap={6}
-            padding={2}
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
@@ -109,7 +117,6 @@ const Header = () => {
                           cursor: "pointer",
                         }}
                       >
-                        {" "}
                         {gg.logo}
                         <Typography variant="subtitle1"> {gg.title}</Typography>
                       </Box>
@@ -119,7 +126,7 @@ const Header = () => {
               </Stack>
             </AppBar>
           </Box>
-        </Box>
+        </Stack>
       </Container>
     </AppBar>
   );

@@ -34,9 +34,9 @@ export const SignUp = () => {
         Бүртгүүлэх
       </Typography>
       <Stack gap={2} width={"384px"}>
-        <FormGroup>
-          <FormControl>
-            <Typography fontSize={"14px"}>Нэр</Typography>
+        <FormGroup sx={{ gap: 1 }}>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography variant="h4">Нэр</Typography>
             <TextField
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -47,7 +47,7 @@ export const SignUp = () => {
             />
           </FormControl>
           <FormControl>
-            <Typography fontSize={"14px"}>И-мэйл </Typography>
+            <Typography variant="h4">И-мэйл </Typography>
             <TextField
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -57,10 +57,8 @@ export const SignUp = () => {
               placeholder="Имэйл хаягаа оруулна уу"
             />
           </FormControl>
-          <FormControl>
-            <Typography mb={1} fontSize={"14px"}>
-              Хаяг
-            </Typography>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography variant="h4">Хаяг</Typography>
             <TextField
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -70,8 +68,8 @@ export const SignUp = () => {
               placeholder="Та хаягаа оруулна уу"
             />
           </FormControl>
-          <FormControl>
-            <Typography fontSize={"14px"}>Нууц үг</Typography>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography variant="h4">Нууц үг</Typography>
             <OutlinedInput
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -92,8 +90,8 @@ export const SignUp = () => {
               }
             />
           </FormControl>
-          <FormControl>
-            <Typography fontSize={"14px"}>Нууц үг давтах</Typography>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography variant="h4">Нууц үг давтах</Typography>
             <OutlinedInput
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -126,7 +124,7 @@ export const SignUp = () => {
               },
             }}
           />
-          <Typography>Үйлчилгээний нөхцөл зөвшөөрөх</Typography>
+          <Typography variant="h4">Үйлчилгээний нөхцөл зөвшөөрөх</Typography>
         </Stack>
         <Stack
           height={"48px"}

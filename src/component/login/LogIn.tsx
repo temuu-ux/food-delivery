@@ -8,6 +8,7 @@ import {
   FormGroup,
   Link,
   Button,
+  useTheme,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
@@ -20,6 +21,8 @@ const LogIn = () => {
   ) => {
     event.preventDefault();
   };
+
+  const theme = useTheme();
   return (
     <Stack
       p={4}
@@ -30,15 +33,20 @@ const LogIn = () => {
       alignItems={"center"}
       gap={6}
     >
-      <Typography fontSize={"28px"} fontWeight={700} color={"#0D1118"}>
-        Бүртгүүлэх
+      <Typography fontSize={"27px"} fontWeight={700} color={"#0D1118"}>
+        Нэвтрэх
       </Typography>
-      <Stack gap={2} width={"384px"}>
-        <FormGroup>
-          <FormControl>
-            <Typography fontSize={"14px"}>И-мэйл </Typography>
+      <Stack gap={4} width={"384px"}>
+        <FormGroup sx={{ gap: 2 }}>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography color={theme.palette.primary.dark} variant="h4">
+              И-мэйл
+            </Typography>
             <TextField
               sx={{
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontFamily: 200,
                 backgroundColor: "#F7F7F8",
               }}
               fullWidth
@@ -47,8 +55,10 @@ const LogIn = () => {
             />
           </FormControl>
 
-          <FormControl>
-            <Typography fontSize={"14px"}>Нууц үг</Typography>
+          <FormControl sx={{ gap: 1 }}>
+            <Typography color={theme.palette.primary.dark} variant="h4">
+              Нууц үг
+            </Typography>
             <OutlinedInput
               sx={{
                 backgroundColor: "#F7F7F8",
@@ -71,25 +81,45 @@ const LogIn = () => {
           </FormControl>
         </FormGroup>
       </Stack>
-      <Stack width={"324px"} gap={4}>
+      <Stack width={"384px"} gap={4}>
         <Link href="/dash-home" underline="none">
-          {" "}
           <Stack bgcolor={"#18BA51"} borderRadius={"4px"}>
             <Button>
-              <Typography color={"white"}>Нэвтрэх</Typography>
+              <Typography
+                fontSize={"16px"}
+                fontStyle={"normal"}
+                fontWeight={400}
+                color={"white"}
+              >
+                Нэвтрэх
+              </Typography>
             </Button>
           </Stack>
         </Link>
-        <Typography textAlign={"center"}>Эсвэл</Typography>
+        <Typography
+          fontSize={"16px"}
+          fontStyle={"normal"}
+          fontWeight={400}
+          textAlign={"center"}
+        >
+          Эсвэл
+        </Typography>
         <Stack
           bgcolor={"#FFFFFF"}
           borderRadius={"4px"}
           border={"1px #18BA51 solid"}
+          textAlign={"center"}
         >
           <Link href={"/sign"}>
-            {" "}
             <Button>
-              <Typography color={"#272727"}>Бүртгүүлэх</Typography>
+              <Typography
+                fontSize={"16px"}
+                fontStyle={"normal"}
+                fontWeight={400}
+                color={"#272727"}
+              >
+                Бүртгүүлэх
+              </Typography>
             </Button>
           </Link>
         </Stack>

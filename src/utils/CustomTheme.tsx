@@ -35,12 +35,13 @@ const theme = createTheme({
       fontStyle: "normal",
       fontWeight: 700,
     },
-    body1: {
-      fontSize: 20,
+    caption: {
+      fontSize: 18,
       fontStyle: "normal",
-      fontWeight: 900,
+      fontWeight: 400,
     },
-    body2: {
+
+    button: {
       fontSize: 18,
       fontStyle: "normal",
       fontWeight: 600,

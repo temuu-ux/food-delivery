@@ -32,7 +32,7 @@ const Footer = () => {
             </Box>
           </Stack>
           <Box
-            gap={18}
+            gap={13}
             display={"flex"}
             textAlign={"center"}
             alignItems={"center"}
@@ -70,9 +70,10 @@ const Footer = () => {
             >
               Хоолны цэс
             </Link>
+
             <Link
               color={"#FFFFFF"}
-              href="#"
+              href="/desCom/term-of-service"
               underline="always"
               sx={{
                 my: 2,
@@ -94,7 +95,7 @@ const Footer = () => {
             </Link>
             <Link
               color={"#FFFFFF"}
-              href="#"
+              href="/desCom/privacy"
               underline="always"
               sx={{
                 my: 2,
@@ -127,8 +128,8 @@ const Footer = () => {
             position={"absolute"}
             sx={{
               borderBottom: "2px solid #FFFFFF ",
-              left: "390px",
-              right: "370px",
+              left: "420px",
+              right: "420px",
             }}
           ></Box>
           <Stack

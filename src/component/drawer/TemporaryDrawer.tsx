@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
@@ -9,11 +10,11 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import { useCartData } from "@/context/CartContext";
 export const TemporaryDrawer = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  const [countBuy, setCountBuy] = React.useState(1);
+  const [countBuy, setCountBuy] = useState(1);
   const addHandler = () => {
     setCountBuy(countBuy + 1);
   };
@@ -21,6 +22,7 @@ export const TemporaryDrawer = () => {
     const count = countBuy - 1;
     count < 1 ? setCountBuy(1) : setCountBuy(count);
   };
+  const [allprice, setAllprice] = useState(0);
   const { cartData } = useCartData();
   const box = {
     width: "40px",
@@ -31,24 +33,39 @@ export const TemporaryDrawer = () => {
     color: "#FFFFFF",
     borderRadius: "10px",
   };
+
+  React.useEffect(() => {
+    priceHandler();
+  }, [cartData]);
+
+  const priceHandler = () => {
+    let totalPrice = 0;
+    cartData.forEach((el) => {
+      const price = el.price * el.count;
+      totalPrice += price;
+    });
+    setAllprice(totalPrice);
+  };
+
   const DrawerList = (
     <Box sx={{ width: 586 }} role="presentation" onClick={toggleDrawer(false)}>
       <Stack py={6} gap={10} px={6} p={4}>
         <Stack gap={22} direction={"row"}>
-          {" "}
           <ArrowBackIosNewIcon />
-          <Typography variant="body1">Таны сагс</Typography>
+          <Typography variant="button">Таны сагс</Typography>
         </Stack>
-        <Stack gap={4}>
+        <Stack gap={4} sx={{ marginBottom: "150px" }}>
           {cartData.map((data, index) => {
             return (
               <Stack
+                boxShadow={3}
                 borderTop={1}
                 borderBottom={1}
                 borderColor={"#D6D8DB"}
                 width={"538px"}
                 gap={4}
                 py={4}
+                px={5}
                 key={index}
                 direction={"row"}
               >
@@ -122,15 +139,56 @@ export const TemporaryDrawer = () => {
           })}
         </Stack>
       </Stack>
+      <Box
+        px={4}
+        pt={2}
+        pb={5}
+        height={"176px"}
+        width={"600px"}
+        sx={{
+          boxShadow: 3,
+          position: "fixed",
+          bottom: "0px",
+          backgroundColor: "white",
+        }}
+      >
+        <Stack direction={"row"}>
+          <Stack width={"256px"}>
+            <Typography color={"#5E6166"} variant="caption">
+              Нийт төлөх дүн
+            </Typography>
+
+            <Typography variant="h3" color={"#121316"}>
+              {allprice}
+            </Typography>
+          </Stack>
+          <Stack
+            borderRadius={1}
+            bgcolor={theme.palette.primary.main}
+            justifyContent={"center"}
+          >
+            <Button
+              sx={{
+                width: "256px",
+                color: theme.palette.primary.light,
+              }}
+            >
+              Захиалах
+            </Button>
+          </Stack>
+        </Stack>
+      </Box>
     </Box>
   );
 
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)}>Сагс</Button>
+    <Box>
+      <Button onClick={toggleDrawer(true)}>
+        <Typography variant="subtitle1">Сагс</Typography>
+      </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
-    </div>
+    </Box>
   );
 };

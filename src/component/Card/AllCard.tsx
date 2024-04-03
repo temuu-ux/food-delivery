@@ -9,25 +9,22 @@ export const AllCard = () => {
   const theme = useTheme();
   const [menu, setMenu] = useState("Breakfast");
   const titleMenu = [
+    "Breakfast",
     "Main Dish",
     "Salads and Appetizers",
-    "Breakfast",
     "Dessert",
   ];
 
-  // const buttonStyle = (category: string) => ({
-  //   width: "280px",
-
-  // });
-
   return (
     <Container>
-      <Stack direction={"row"} pt={4}>
+      <Stack direction={"row"} pt={4} gap={2}>
         {titleMenu.map((category, index) => {
           return (
             <Stack width={"100%"} my={"32px"} key={index}>
               <Stack
-                width={"250px"}
+                border={1}
+                borderColor={"#D6D8DB"}
+                width={"280px"}
                 alignItems={"center"}
                 textAlign={"center"}
                 borderRadius={2}

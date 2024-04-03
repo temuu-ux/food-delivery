@@ -28,7 +28,7 @@ const Header = () => {
       ),
       title: (
         <>
-          <TemporaryDrawer />{" "}
+          <TemporaryDrawer />
         </>
       ),
     },
@@ -112,6 +112,7 @@ const Header = () => {
                       <Box
                         display={"flex"}
                         alignItems={"center"}
+                        gap={1}
                         onClick={() => handlerCol(gg.id)}
                         sx={{
                           my: 2,

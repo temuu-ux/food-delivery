@@ -47,7 +47,7 @@ export const AllCard = () => {
                   }}
                   onClick={() => setMenu(category)}
                 >
-                  <Typography>{category}</Typography>
+                  <Typography variant="h6">{category}</Typography>
                 </Button>
               </Stack>
             </Stack>
@@ -64,4 +64,3 @@ export const AllCard = () => {
     </Container>
   );
 };
-// export default AllCard;

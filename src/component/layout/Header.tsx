@@ -12,22 +12,28 @@ import {
 import { Pine, Cart, Profile } from "../icon/Pine";
 import { Search } from "./Search";
 import { TemporaryDrawer } from "../drawer/TemporaryDrawer";
-
-const gg = [
-  {
-    id: 5,
-    logo: <Cart width={24} height={24} />,
-    title: (
-      <>
-        <TemporaryDrawer />{" "}
-      </>
-    ),
-  },
-  { id: 6, logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
-];
+import Badge from "@mui/material/Badge";
+import { useCartData } from "@/context/CartContext";
 
 // console.log("gg", ...gg);
 const Header = () => {
+  const { cartData } = useCartData();
+  const gg = [
+    {
+      id: 5,
+      logo: (
+        <Badge badgeContent={cartData.length} color="primary">
+          <Cart width={24} height={24} />
+        </Badge>
+      ),
+      title: (
+        <>
+          <TemporaryDrawer />{" "}
+        </>
+      ),
+    },
+    { id: 6, logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
+  ];
   const theme = useTheme();
   const [color, setColor] = useState<number>(1);
   const pages = [
@@ -106,7 +112,6 @@ const Header = () => {
                       <Box
                         display={"flex"}
                         alignItems={"center"}
-                        gap={1}
                         onClick={() => handlerCol(gg.id)}
                         sx={{
                           my: 2,

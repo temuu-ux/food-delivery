@@ -3,7 +3,7 @@ import Link from "next/link";
 import * as React from "react";
 import CardModal from "../Card/CardModal";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import FoodData from "../../utils/FoodData.json";
+
 import { useFoodData } from "@/context/Context";
 
 const Menu = ({ category }: { category: string }) => {

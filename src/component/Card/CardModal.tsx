@@ -4,6 +4,7 @@ import { Stack, Box, Button, Typography } from "@mui/material";
 import { Modal, CardMedia, useTheme } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import { useCartData } from "@/context/CartContext";
 interface data {
   id: number;
   category: string;
@@ -36,10 +37,10 @@ const box = {
   borderRadius: "10px",
 };
 const CardModal = ({ data }: { data: data }) => {
+  const { cartData, setCartData } = useCartData();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
   const [countBuy, setCountBuy] = React.useState(1);
 
   const addHandler = () => {
@@ -48,6 +49,37 @@ const CardModal = ({ data }: { data: data }) => {
   const minusHandler = () => {
     const count = countBuy - 1;
     count < 1 ? setCountBuy(1) : setCountBuy(count);
+  };
+
+  // const dataHandler = () => {
+  //   setCartData(unitData);
+  //   const unitData={
+  //   data.category,
+  //     data.foodName,
+  //     data.id,
+  //     data.imagePath,
+  //     data.ingredients,
+  //     data.price,
+  //     data.sale,
+  //     data.stock;}
+  // };
+
+  const dataHandler = () => {
+    const unitData = {
+      category: data.category,
+      foodName: data.foodName,
+      id: data.id,
+      imagePath: data.imagePath,
+      ingredients: data.ingredients,
+      price: data.price,
+      sale: data.sale,
+      stock: data.stock,
+      count: countBuy,
+    };
+
+    setCartData([...cartData, unitData]);
+    handleClose();
+    // console.log("data", unitData);
   };
 
   const theme = useTheme();
@@ -69,6 +101,25 @@ const CardModal = ({ data }: { data: data }) => {
             image={data.imagePath}
             alt={data.foodName}
           />
+          {data.sale > 0 ? (
+            <Stack
+              position={"absolute"}
+              left={400}
+              borderRadius={4}
+              top={50}
+              bgcolor={theme.palette.primary.main}
+              width={"69px"}
+              textAlign={"center"}
+              border={1}
+              borderColor={"white"}
+            >
+              <Typography color={theme.palette.primary.light}>
+                {data.sale + "%"}
+              </Typography>
+            </Stack>
+          ) : (
+            <Stack></Stack>
+          )}
           <Stack gap={4} width={"384px"}>
             <Stack>
               <Typography sx={{ mt: 4, fontSize: theme.typography.subtitle2 }}>
@@ -148,7 +199,9 @@ const CardModal = ({ data }: { data: data }) => {
               borderRadius={1}
               sx={{ backgroundColor: "#18BA51" }}
             >
-              <Button sx={{ color: "#FFFFFF" }}>Сагслах</Button>
+              <Button sx={{ color: "#FFFFFF" }} onClick={dataHandler}>
+                Сагслах
+              </Button>
             </Box>
           </Stack>
         </Box>

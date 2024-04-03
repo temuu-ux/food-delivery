@@ -40,6 +40,11 @@ const theme = createTheme({
       fontStyle: "normal",
       fontWeight: 900,
     },
+    body2: {
+      fontSize: 18,
+      fontStyle: "normal",
+      fontWeight: 600,
+    },
     h5: {
       fontSize: 22,
       fontStyle: "normal",
@@ -68,7 +73,7 @@ const theme = createTheme({
     h6: {
       fontSize: 18,
       fontStyle: "normal",
-      fontWeight: 600,
+      fontWeight: 500,
     },
   },
 });

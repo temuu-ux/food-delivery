@@ -12,8 +12,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 export const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
@@ -22,7 +22,14 @@ export const SignUp = () => {
     event.preventDefault();
   };
   return (
-    <Stack p={4} width={"450px"} height={"720px"} alignItems={"center"} gap={6}>
+    <Stack
+      mt={5}
+      p={4}
+      width={"450px"}
+      height={"720px"}
+      alignItems={"center"}
+      gap={6}
+    >
       <Typography fontSize={"28px"} fontWeight={700} color={"#0D1118"}>
         Бүртгүүлэх
       </Typography>
@@ -112,7 +119,6 @@ export const SignUp = () => {
       <Stack p={4} gap={4}>
         <Stack direction={"row"} pr={4} py={2} gap={2} alignItems={"center"}>
           <Checkbox
-            defaultChecked
             sx={{
               color: "#161616",
               "&.Mui-checked": {

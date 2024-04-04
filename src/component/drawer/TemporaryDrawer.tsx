@@ -1,8 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
+import { Box, Link, Drawer, Button } from "@mui/material";
 import { CardMedia, Stack, Typography, useTheme } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddIcon from "@mui/icons-material/Add";
@@ -162,20 +160,22 @@ export const TemporaryDrawer = () => {
               {allprice}
             </Typography>
           </Stack>
-          <Stack
-            borderRadius={1}
-            bgcolor={theme.palette.primary.main}
-            justifyContent={"center"}
-          >
-            <Button
-              sx={{
-                width: "256px",
-                color: theme.palette.primary.light,
-              }}
+          <Link href={"/orderpage"}>
+            <Stack
+              borderRadius={1}
+              bgcolor={theme.palette.primary.main}
+              justifyContent={"center"}
             >
-              Захиалах
-            </Button>
-          </Stack>
+              <Button
+                sx={{
+                  width: "256px",
+                  color: theme.palette.primary.light,
+                }}
+              >
+                Захиалах
+              </Button>
+            </Stack>
+          </Link>
         </Stack>
       </Box>
     </Box>

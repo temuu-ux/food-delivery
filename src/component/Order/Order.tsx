@@ -7,10 +7,13 @@ import {
   useTheme,
   TextField,
 } from "@mui/material";
-
+import { useCartData } from "@/context/CartContext";
 import { OrderOption1, OrderOption2, OrderOption3 } from ".";
+
 const Order = () => {
   const theme = useTheme();
+  const { cartData } = useCartData();
+  console.log("data", cartData);
   return (
     <Container>
       <Stack my={30} direction={"row"} justifyContent={"space-between"}>
@@ -131,7 +134,9 @@ const Order = () => {
             </Box>
           </Stack>
           <Stack p={6} gap={4} boxShadow={3} borderRadius={4}>
-            sac
+            {cartData.map((e, index) => (
+              <Stack key={index}>{e.foodName}</Stack>
+            ))}
           </Stack>
         </Stack>
       </Stack>

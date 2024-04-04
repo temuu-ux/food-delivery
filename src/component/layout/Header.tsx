@@ -32,7 +32,12 @@ const Header = () => {
         </>
       ),
     },
-    { id: 6, logo: <Profile width={18} height={18} />, title: "Нэвтрэх" },
+    {
+      id: 6,
+      logo: <Profile width={18} height={18} />,
+      link: "/orderpage",
+      title: "Нэвтрэх",
+    },
   ];
   const theme = useTheme();
   const [color, setColor] = useState<number>(1);
@@ -124,7 +129,12 @@ const Header = () => {
                         }}
                       >
                         {gg.logo}
-                        <Typography variant="subtitle1"> {gg.title}</Typography>
+                        <Link href={gg.link}>
+                          <Typography variant="subtitle1">
+                            {" "}
+                            {gg.title}
+                          </Typography>
+                        </Link>
                       </Box>
                     </Stack>
                   ))}

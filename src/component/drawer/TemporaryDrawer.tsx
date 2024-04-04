@@ -160,7 +160,7 @@ export const TemporaryDrawer = () => {
               {allprice}
             </Typography>
           </Stack>
-          <Link href={"/orderpage"}>
+          {/* <Link href={"/orderpage"}> */}
             <Stack
               borderRadius={1}
               bgcolor={theme.palette.primary.main}
@@ -175,7 +175,7 @@ export const TemporaryDrawer = () => {
                 Захиалах
               </Button>
             </Stack>
-          </Link>
+          {/* </Link> */}
         </Stack>
       </Box>
     </Box>

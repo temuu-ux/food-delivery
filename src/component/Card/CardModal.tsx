@@ -42,7 +42,6 @@ const CardModal = ({ data }: { data: data }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [countBuy, setCountBuy] = React.useState(1);
-
   const addHandler = () => {
     setCountBuy(countBuy + 1);
   };
@@ -50,20 +49,6 @@ const CardModal = ({ data }: { data: data }) => {
     const count = countBuy - 1;
     count < 1 ? setCountBuy(1) : setCountBuy(count);
   };
-
-  // const dataHandler = () => {
-  //   setCartData(unitData);
-  //   const unitData={
-  //   data.category,
-  //     data.foodName,
-  //     data.id,
-  //     data.imagePath,
-  //     data.ingredients,
-  //     data.price,
-  //     data.sale,
-  //     data.stock;}
-  // };
-
   const dataHandler = () => {
     const unitData = {
       category: data.category,
@@ -150,9 +135,9 @@ const CardModal = ({ data }: { data: data }) => {
                   backgroundColor: theme.palette.secondary.light,
                 }}
               >
-                {data.ingredients.map((e) => {
-                  return e + "," + " ";
-                })}
+                {data.ingredients.map((e, index) =>
+                  index === data.ingredients.length - 1 ? e : e + ", "
+                )}
               </Typography>
             </Stack>
             <Stack>

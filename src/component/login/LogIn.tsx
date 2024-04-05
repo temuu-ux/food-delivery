@@ -1,19 +1,24 @@
-import {
-  Typography,
-  TextField,
-  IconButton,
-  Stack,
-  OutlinedInput,
-  FormControl,
-  FormGroup,
-  Link,
-  Button,
-  useTheme,
-} from "@mui/material";
+import { FormControl, FormGroup, Button, useTheme, Stack } from "@mui/material";
+import { Typography, TextField, Link, IconButton } from "@mui/material";
+import { OutlinedInput } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
+
 const LogIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [isInputFilled, setIsInputFilled] = React.useState(false);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    setIsInputFilled(!!e.target.value && !!password);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+    setIsInputFilled(!!event.target.value && !!email);
+  };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (
@@ -49,6 +54,8 @@ const LogIn = () => {
                 fontFamily: 200,
                 backgroundColor: "#F7F7F8",
               }}
+              value={email}
+              onChange={handleEmailChange}
               fullWidth
               id="fullWidth"
               placeholder="Имэйл хаягаа оруулна уу"
@@ -60,6 +67,8 @@ const LogIn = () => {
               Нууц үг
             </Typography>
             <OutlinedInput
+              value={password}
+              onChange={handlePasswordChange}
               sx={{
                 backgroundColor: "#F7F7F8",
                 borderColor: "#ECEDF0",
@@ -83,13 +92,22 @@ const LogIn = () => {
       </Stack>
       <Stack width={"384px"} gap={4}>
         <Link href="/dash-home" underline="none">
-          <Stack bgcolor={"#18BA51"} borderRadius={"4px"}>
-            <Button>
+          <Stack
+            bgcolor={isInputFilled ? "#18BA51" : "#EEEFF2"}
+            borderRadius={"4px"}
+            alignItems={"center"}
+          >
+            <Button
+              sx={{
+                width: "384px",
+                height: "48px",
+              }}
+            >
               <Typography
                 fontSize={"16px"}
                 fontStyle={"normal"}
                 fontWeight={400}
-                color={"white"}
+                color={isInputFilled ? "#fff" : "#1C20243D"}
               >
                 Нэвтрэх
               </Typography>
@@ -111,7 +129,12 @@ const LogIn = () => {
           textAlign={"center"}
         >
           <Link href={"/sign"}>
-            <Button>
+            <Button
+              sx={{
+                width: "384px",
+                height: "48px",
+              }}
+            >
               <Typography
                 fontSize={"16px"}
                 fontStyle={"normal"}

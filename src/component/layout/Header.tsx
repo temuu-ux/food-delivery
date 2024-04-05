@@ -9,34 +9,31 @@ import {
   useTheme,
   Link,
 } from "@mui/material";
-import { Pine, Cart, Profile } from "../icon/Pine";
+import { Pine } from "../icon/Pine";
 import { Search } from "./Search";
-import { TemporaryDrawer } from "../drawer/TemporaryDrawer";
-import Badge from "@mui/material/Badge";
-import { useCartData } from "@/context/CartContext";
+import { DrawerCard } from "../drawer/DrawerCard";
+import { HeaderLogIn } from "./HeaderLogIn";
 
 // console.log("gg", ...gg);
 const Header = () => {
-  const { cartData } = useCartData();
   const gg = [
     {
       id: 5,
-      logo: (
-        <Badge badgeContent={cartData.length} color="primary">
-          <Cart width={24} height={24} />
-        </Badge>
-      ),
+
       title: (
         <>
-          <TemporaryDrawer />
+          <DrawerCard />
         </>
       ),
     },
     {
       id: 6,
-      logo: <Profile width={18} height={18} />,
-      link: "/orderpage",
-      title: "Нэвтрэх",
+
+      title: (
+        <>
+          <HeaderLogIn />
+        </>
+      ),
     },
   ];
   const theme = useTheme();
@@ -129,12 +126,8 @@ const Header = () => {
                         }}
                       >
                         {gg.logo}
-                        <Link href={gg.link}>
-                          <Typography variant="subtitle1">
-                            {" "}
-                            {gg.title}
-                          </Typography>
-                        </Link>
+
+                        <Typography variant="subtitle1"> {gg.title}</Typography>
                       </Box>
                     </Stack>
                   ))}

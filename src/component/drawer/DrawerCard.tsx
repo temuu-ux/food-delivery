@@ -1,12 +1,18 @@
 import * as React from "react";
 import { useState } from "react";
-import { Box, Link, Drawer, Button } from "@mui/material";
+import { Box, Drawer, Button } from "@mui/material";
 import { CardMedia, Stack, Typography, useTheme } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useCartData } from "@/context/CartContext";
-export const TemporaryDrawer = () => {
+import { ButtonPart } from "./ButtonPart";
+import Badge from "@mui/material/Badge";
+import { Cart } from "../icon/Pine";
+// import { useOrderData } from "@/context/OrderContext";
+
+export const DrawerCard = () => {
+  // const { orderData, setOrderData } = useOrderData();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -20,7 +26,6 @@ export const TemporaryDrawer = () => {
     const count = countBuy - 1;
     count < 1 ? setCountBuy(1) : setCountBuy(count);
   };
-  const [allprice, setAllprice] = useState(0);
   const { cartData } = useCartData();
   const box = {
     width: "40px",
@@ -31,20 +36,34 @@ export const TemporaryDrawer = () => {
     color: "#FFFFFF",
     borderRadius: "10px",
   };
+  // const data = cartData.map((e) => {
+  //   e.category;
+  //   e.count;
+  //   e.foodName;
+  //   e.id;
+  //   e.imagePath;
+  //   e.ingredients;
+  //   e.price;
+  //   e.sale;
+  //   e.stock;
+  // });
+  // const getHandler = ({ data }: { data: data }) => {
+  //   const unitData = {
+  //     category: data.category,
+  //     foodName: data.foodName,
+  //     id: data.id,
+  //     imagePath: data.imagePath,
+  //     ingredients: data.ingredients,
+  //     price: data.price,
+  //     sale: data.sale,
+  //     stock: data.stock,
+  //     count: countBuy,
+  //   };
 
-  React.useEffect(() => {
-    priceHandler();
-  }, [cartData]);
+  //   setOrderData([...orderData, unitData]);
 
-  const priceHandler = () => {
-    let totalPrice = 0;
-    cartData.forEach((el) => {
-      const price = el.price * el.count;
-      totalPrice += price;
-    });
-    setAllprice(totalPrice);
-  };
-
+  //   console.log("data", unitData);
+  // };
   const DrawerList = (
     <Box sx={{ width: 586 }} role="presentation" onClick={toggleDrawer(false)}>
       <Stack py={6} gap={10} px={6} p={4}>
@@ -71,6 +90,7 @@ export const TemporaryDrawer = () => {
                   {" "}
                   <CardMedia
                     component="img"
+                    width={245}
                     image={data.imagePath}
                     alt={data.foodName}
                     sx={{
@@ -137,53 +157,15 @@ export const TemporaryDrawer = () => {
           })}
         </Stack>
       </Stack>
-      <Box
-        px={4}
-        pt={2}
-        pb={5}
-        height={"176px"}
-        width={"600px"}
-        sx={{
-          boxShadow: 3,
-          position: "fixed",
-          bottom: "0px",
-          backgroundColor: "white",
-        }}
-      >
-        <Stack direction={"row"}>
-          <Stack width={"256px"}>
-            <Typography color={"#5E6166"} variant="caption">
-              Нийт төлөх дүн
-            </Typography>
-
-            <Typography variant="h3" color={"#121316"}>
-              {allprice}
-            </Typography>
-          </Stack>
-          {/* <Link href={"/orderpage"}> */}
-            <Stack
-              borderRadius={1}
-              bgcolor={theme.palette.primary.main}
-              justifyContent={"center"}
-            >
-              <Button
-                sx={{
-                  width: "256px",
-                  color: theme.palette.primary.light,
-                }}
-              >
-                Захиалах
-              </Button>
-            </Stack>
-          {/* </Link> */}
-        </Stack>
-      </Box>
+      <ButtonPart />
     </Box>
   );
-
   return (
     <Box>
-      <Button onClick={toggleDrawer(true)}>
+      <Button sx={{ gap: 1 }} onClick={toggleDrawer(true)}>
+        <Badge badgeContent={cartData.length} color="primary">
+          <Cart width={24} height={24} />
+        </Badge>
         <Typography variant="subtitle1">Сагс</Typography>
       </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>

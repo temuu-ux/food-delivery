@@ -18,8 +18,8 @@ export const OrderOption1 = () => {
         <InputLabel id="demo-simple-select-label">Дүүрэг сонгоно уу</InputLabel>
 
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          // labelId="demo-simple-select-label"
+          // id="demo-simple-select"
           value={age}
           label="string"
           onChange={handleChange}

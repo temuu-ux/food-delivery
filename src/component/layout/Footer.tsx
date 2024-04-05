@@ -84,7 +84,7 @@ const Footer = () => {
             </Link>
             <Link
               color={"#FFFFFF"}
-              href="#"
+              href="/desCom/map"
               underline="always"
               sx={{
                 my: 2,

@@ -12,3 +12,7 @@ body {
   font-family: "SF Pro", -apple-system, sans-serif;
   max-width: 100vw;
 }
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}

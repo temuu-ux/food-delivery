@@ -12,7 +12,7 @@ import {
 import { Pine } from "../icon/Pine";
 import { Search } from "./Search";
 import { DrawerCard } from "../drawer/DrawerCard";
-import { HeaderLogIn } from "./HeaderLogIn";
+import { HeaderLogModal } from "./HeaderLogModal";
 
 // console.log("gg", ...gg);
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
 
       title: (
         <>
-          <HeaderLogIn />
+          <HeaderLogModal />
         </>
       ),
     },

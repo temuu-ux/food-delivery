@@ -5,7 +5,6 @@ const TermOfService = () => {
   return (
     <Container
       sx={{
-        my:2,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

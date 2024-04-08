@@ -33,13 +33,7 @@ export const SignUp = () => {
     event.preventDefault();
   };
   return (
-    <Stack
-      mt={10}
-      width={"450px"}
-      height={"720px"}
-      alignItems={"center"}
-      gap={6}
-    >
+    <Stack width={"450px"} height={"720px"} alignItems={"center"} gap={6}>
       <Typography fontSize={"28px"} fontWeight={700} color={"#0D1118"}>
         Бүртгүүлэх
       </Typography>

@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Box, Link } from "@mui/material";
-import { UserProfile } from "../user/UserProfile";
 
 export const UserDropdown = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -14,16 +13,15 @@ export const UserDropdown = () => {
 
   const push = [
     {
+      id: 1,
       title: "Profile",
-      com: <UserProfile />,
+      link: "/user/userprofile",
     },
+    { id: 2, title: "Order", link: "/orderpage" },
     {
-      title: "My account",
-      com: <UserProfile />,
-    },
-    {
+      id: 3,
       title: "Logout",
-      com: <UserProfile />,
+      link: "#",
     },
   ];
 
@@ -52,8 +50,7 @@ export const UserDropdown = () => {
       >
         {push.map((e, index) => {
           return (
-            <Link key={index} href={"/user/userprofile"}>
-              {" "}
+            <Link key={index} underline="none" href={e.link}>
               <MenuItem onClick={handleClose}>{e.title}</MenuItem>
             </Link>
           );

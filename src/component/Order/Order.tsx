@@ -14,7 +14,7 @@ const Order = () => {
   });
   return (
     <Container>
-      <Stack mt={18} mb={10} direction={"row"} justifyContent={"space-between"}>
+      <Stack direction={"row"} justifyContent={"space-between"}>
         <OrderCard />
         <Stack width={"432px"}>
           <Stack direction={"row"} px={1} py={4} gap={4}>

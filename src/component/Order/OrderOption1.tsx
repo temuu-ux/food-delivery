@@ -6,31 +6,55 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export const OrderOption1 = () => {
-  const [age, setAge] = React.useState("");
+  const [region, setRegion] = React.useState(""); // Changed 'age' to 'region' for clarity
+  const [color, setColor] = React.useState("#8B8E95"); // Default color
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+  const handleRegionChange = (event: SelectChangeEvent) => {
+    setRegion(event.target.value as string);
+    // Set color based on selected region
+    switch (event.target.value) {
+      case "Баянзүрх дүүрэг":
+        setColor("#18BA51");
+        break;
+      case "Хан-Уул дүүрэг":
+        setColor("#FFC107"); // Change color code as per your preference
+        break;
+      case "Баянгол дүүрэг":
+        setColor("#FF5722"); // Change color code as per your preference
+        break;
+      case "Сонгинохайрхан дүүрэг":
+        setColor("#9C27B0"); // Change color code as per your preference
+        break;
+      case "Чингэлтэй дүүрэг":
+        setColor("#2196F3"); // Change color code as per your preference
+        break;
+      default:
+        setColor("#8B8E95"); // Default color
+        break;
+    }
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel variant="outlined" id="demo-simple-select-label">
-          Дүүрэг сонгоно уу
+        <InputLabel variant="outlined" id="region-select-label">
+          Дүүрэг сонгох
         </InputLabel>
-
         <Select
-          // labelId="demo-simple-select-label"
-          // id="demo-simple-select"
-          value={age}
-          label="string"
-          onChange={handleChange}
+          sx={{ bgcolor: color, color: "#FFFFFF" }} // Set background color and text color
+          labelId="region-select-label"
+          id="region-select"
+          value={region}
+          label="Дүүрэг сонгох"
+          onChange={handleRegionChange}
         >
-          <MenuItem value={1}>Баянзүрх дүүрэг</MenuItem>
-          <MenuItem value={2}>Хан-Уул дүүрэг</MenuItem>
-          <MenuItem value={3}>Баянгол дүүрэг</MenuItem>
-          <MenuItem value={4}>Сонгинохайрхан дүүрэг</MenuItem>
-          <MenuItem value={5}>Чингэлтэй дүүрэг</MenuItem>
+          <MenuItem value="Баянзүрх дүүрэг">Баянзүрх дүүрэг</MenuItem>
+          <MenuItem value="Хан-Уул дүүрэг">Хан-Уул дүүрэг</MenuItem>
+          <MenuItem value="Баянгол дүүрэг">Баянгол дүүрэг</MenuItem>
+          <MenuItem value="Сонгинохайрхан дүүрэг">
+            Сонгинохайрхан дүүрэг
+          </MenuItem>
+          <MenuItem value="Чингэлтэй дүүрэг">Чингэлтэй дүүрэг</MenuItem>
         </Select>
       </FormControl>
     </Box>

@@ -5,6 +5,7 @@ import { FaceBook, X, Ins, Pine } from "../footerIcon/Logo";
 const Footer = () => {
   return (
     <Stack
+      mt={10}
       display={"flex"}
       // width={"full"}
       height={"545px"}

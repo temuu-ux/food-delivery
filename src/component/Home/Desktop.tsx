@@ -9,13 +9,11 @@ const Desktop = () => {
       width="full"
       height={"788px"}
       sx={{ backgroundImage: "url(/green.png)" }}
-      mt={11}
     >
       <Container sx={{ display: "flex", justifyContent: "space-between" }}>
         <Stack
           justifyContent={"center"}
           alignItems={"start"}
-          py={40}
           width={384}
           gap={4}
         >

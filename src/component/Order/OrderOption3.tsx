@@ -6,10 +6,32 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export const OrderOption3 = () => {
-  const [age, setAge] = React.useState("");
+  const [town, setTown] = React.useState("");
+  const [color, setColor] = React.useState("#F7F7F8");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    setTown(event.target.value as string);
+
+    switch (event.target.value) {
+      case "Нархан хотхон":
+        setColor("#18BA51");
+        break;
+      case "26-р байр":
+        setColor("#FFC107");
+        break;
+      case "Хоймор хотхон":
+        setColor("#FF5722");
+        break;
+      case "45-р байр":
+        setColor("#9C27B0");
+        break;
+      case "Зайсан хотхон":
+        setColor("#2196F3");
+        break;
+      default:
+        setColor("#F7F7F8");
+        break;
+    }
   };
 
   return (
@@ -20,17 +42,18 @@ export const OrderOption3 = () => {
         </InputLabel>
 
         <Select
+          sx={{ bgcolor: color, color: "#FFFFFF" }}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={town}
           label="string"
           onChange={handleChange}
         >
-          <MenuItem value={1}>Нархан хотхоно</MenuItem>
-          <MenuItem value={2}>26-р байр</MenuItem>
-          <MenuItem value={3}>Хоймор хотхон</MenuItem>
-          <MenuItem value={4}>45-р байр</MenuItem>
-          <MenuItem value={5}>Зайсан хотхон </MenuItem>
+          <MenuItem value={"Нархан хотхон"}>Нархан хотхон</MenuItem>
+          <MenuItem value={"26-р байр"}>26-р байр</MenuItem>
+          <MenuItem value={"Хоймор хотхон"}>Хоймор хотхон</MenuItem>
+          <MenuItem value={"45-р байр"}>45-р байр</MenuItem>
+          <MenuItem value={"Зайсан хотхон"}>Зайсан хотхон </MenuItem>
         </Select>
       </FormControl>
     </Box>

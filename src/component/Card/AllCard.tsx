@@ -1,7 +1,6 @@
 import { Stack, Container, Button, Typography, useTheme } from "@mui/material";
 import CardModal from "./CardModal";
 import { useState } from "react";
-// import FoodData from "../../utils/FoodData.json";
 import { useFoodData } from "@/context/Context";
 
 export const AllCard = () => {
@@ -17,7 +16,7 @@ export const AllCard = () => {
 
   return (
     <Container>
-      <Stack direction={"row"} pt={4} gap={2}>
+      <Stack direction={"row"} gap={2}>
         {titleMenu.map((category, index) => {
           return (
             <Stack width={"100%"} my={"32px"} key={index}>

@@ -25,7 +25,7 @@ export const ButtonPart = () => {
   return (
     <Box
       px={4}
-      pt={2}
+      // pt={2}
       pb={5}
       height={"176px"}
       width={"600px"}

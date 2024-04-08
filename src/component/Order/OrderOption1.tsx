@@ -7,7 +7,9 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 export const OrderOption1 = () => {
   const [region, setRegion] = React.useState(""); // Changed 'age' to 'region' for clarity
-  const [color, setColor] = React.useState("#8B8E95"); // Default color
+  const [color, setColor] = React.useState("#F7F7F8"); // Default color
+  // console.log("region", region);
+  // console.log("color", color);
 
   const handleRegionChange = (event: SelectChangeEvent) => {
     setRegion(event.target.value as string);
@@ -29,7 +31,7 @@ export const OrderOption1 = () => {
         setColor("#2196F3"); // Change color code as per your preference
         break;
       default:
-        setColor("#8B8E95"); // Default color
+        setColor("#F7F7F8"); // Default color
         break;
     }
   };

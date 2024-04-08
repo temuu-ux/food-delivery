@@ -41,13 +41,20 @@ const Header = () => {
   const pages = [
     { id: 1, title: "НҮҮР", link: "/dash-home" },
     { id: 2, title: "ХООЛНЫ ЦЭС", link: "/all-card-menu" },
-    { id: 3, title: "ХҮРГЭЛТИЙН БҮС", link: "#" },
+    { id: 3, title: "ХҮРГЭЛТИЙН БҮС", link: "" },
   ];
   const handlerCol = (id: number) => {
     setColor(id);
   };
   return (
-    <AppBar sx={{ backgroundColor: "#FFF", margin: "auto", boxShadow: "none" }}>
+    <AppBar
+      sx={{
+        backgroundColor: "#FFF",
+        margin: "auto",
+        boxShadow: "none",
+        position: "static",
+      }}
+    >
       <Container>
         <Stack direction={"row"} justifyContent={"space-between"} gap={10}>
           <Box
@@ -125,9 +132,7 @@ const Header = () => {
                           cursor: "pointer",
                         }}
                       >
-                        {gg.logo}
-
-                        <Typography variant="subtitle1"> {gg.title}</Typography>
+                        <Box sx={{ color: "black" }}> {gg.title}</Box>
                       </Box>
                     </Stack>
                   ))}

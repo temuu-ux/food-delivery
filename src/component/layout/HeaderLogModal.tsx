@@ -1,17 +1,10 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { Box, Button, Link, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Profile } from "../icon/Pine";
-import {
-  IconButton,
-  Link,
-  OutlinedInput,
-  Stack,
-  TextField,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Stack } from "@mui/material";
+import { ModalPart } from "./ModalPart";
+import { UserDropdown } from "./UserDropdown";
 
 const style = {
   position: "absolute" as "absolute",
@@ -21,7 +14,6 @@ const style = {
   width: 448,
   height: 549,
   bgcolor: "background.paper",
-
   boxShadow: 24,
   p: 4,
   borderRadius: "16px",
@@ -29,21 +21,41 @@ const style = {
 
 export const HeaderLogModal = () => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [showPassword, setShowPassword] = React.useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
+  const handleOpen = () => {
+    if (chaName == "Нэвтрэх") {
+      setOpen(true);
+    }
+    if (chaName == "Хэрэглэгч") {
+      setOpen(false);
+    }
   };
+
+  const handleClose = () => setOpen(false);
+  const [chaName, setChaName] = React.useState("Нэвтрэх");
+  const [isInputFilled, setIsInputFilled] = React.useState(false);
+
+  const handleChange = () => {
+    setChaName("Хэрэглэгч");
+  };
+
+  const fontStyle = {
+    fontSize: "16px",
+    fontStyle: "normal",
+    fontWeight: 400,
+    textAlign: "center",
+  };
+  const button = {
+    borderRadius: "4px",
+    alignItems: "center",
+  };
+
   return (
-    <div>
-      <Button onClick={handleOpen}>
+    <Box>
+      <Button onClick={handleOpen} sx={{ gap: 1 }}>
         <Profile width={18} height={18} />
-        <Typography>Нэвтрэх</Typography>
+        <Typography>
+          {chaName == "Нэвтрэх" ? "Нэвтрэх" : <UserDropdown />}
+        </Typography>
       </Button>
       <Modal
         open={open}
@@ -52,106 +64,54 @@ export const HeaderLogModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Stack gap={6}>
+          <Stack gap={4}>
             <Typography
               textAlign={"center"}
-              id="modal-modal-title"
-              variant="h6"
+              variant="h5"
+              fontSize={"28px"}
               component="h2"
             >
               Нэвтрэх
             </Typography>
-            <Box>
-              <Stack>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Имэйл
-                </Typography>
-                <TextField
-                  id="filled-password-input"
-                  label="Имэйл хаягаа оруулна уу"
-                  type="text"
-                  autoComplete="current-password"
-                  variant="outlined"
-                />
-              </Stack>
-
-              <Stack>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Нууц үг
-                </Typography>
-                <OutlinedInput
-                  sx={{
-                    backgroundColor: "#F7F7F8",
-                    borderColor: "#ECEDF0",
-                    variant: "outlined",
-                  }}
-                  placeholder="Нууц үг"
-                  id="outlined-adornment-password"
-                  type={showPassword ? "text" : "password"}
-                  endAdornment={
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  }
-                />
-              </Stack>
-            </Box>
+            <ModalPart />
             <Stack gap={2}>
-              <Link href="/dash-home" underline="none">
-                <Stack
-                  // bgcolor={isInputFilled ? "#18BA51" : "#EEEFF2"}
-                  borderRadius={"4px"}
-                  alignItems={"center"}
-                >
-                  <Button
-                    sx={{
-                      width: "384px",
-                      height: "48px",
-                    }}
-                  >
-                    <Typography
-                      fontSize={"16px"}
-                      fontStyle={"normal"}
-                      fontWeight={400}
-                      // color={isInputFilled ? "#fff" : "#1C20243D"}
-                    >
-                      Нэвтрэх
-                    </Typography>
-                  </Button>
-                </Stack>
-              </Link>
-              <Typography
-                fontSize={"16px"}
-                fontStyle={"normal"}
-                fontWeight={400}
-                textAlign={"center"}
+              {/* <Link href="/dash-home" underline="none"> */}
+              <Stack
+                bgcolor={isInputFilled ? "#18BA51" : "#EEEFF2"}
+                sx={button}
               >
+                <Button
+                  onClick={handleChange}
+                  sx={{
+                    height: "48px",
+                    width: "384px",
+                  }}
+                >
+                  <Typography
+                    sx={fontStyle}
+                    color={isInputFilled ? "#fff" : "#1C20243D"}
+                  >
+                    Нэвтрэх
+                  </Typography>
+                </Button>
+              </Stack>
+              {/* </Link> */}
+              <Typography sx={fontStyle} fontSize={"14px"}>
                 Эсвэл
               </Typography>
               <Stack
                 bgcolor={"#FFFFFF"}
-                borderRadius={"4px"}
+                sx={button}
                 border={"1px #18BA51 solid"}
-                textAlign={"center"}
               >
                 <Link href={"/sign"}>
                   <Button
                     sx={{
-                      width: "384px",
                       height: "48px",
+                      width: "384px",
                     }}
                   >
-                    <Typography
-                      fontSize={"16px"}
-                      fontStyle={"normal"}
-                      fontWeight={400}
-                      color={"#272727"}
-                    >
+                    <Typography sx={fontStyle} color={"#272727"}>
                       Бүртгүүлэх
                     </Typography>
                   </Button>
@@ -161,6 +121,6 @@ export const HeaderLogModal = () => {
           </Stack>
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 };

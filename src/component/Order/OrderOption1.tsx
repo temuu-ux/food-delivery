@@ -15,7 +15,9 @@ export const OrderOption1 = () => {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Дүүрэг сонгоно уу</InputLabel>
+        <InputLabel variant="outlined" id="demo-simple-select-label">
+          Дүүрэг сонгоно уу
+        </InputLabel>
 
         <Select
           // labelId="demo-simple-select-label"

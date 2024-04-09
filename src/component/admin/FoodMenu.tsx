@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+
 import { ButtonMenu } from "./ButtonMenu";
+import { CreateFood } from "./CreateFood";
 
 export const FoodMenu = ({ data }: { data: String[] }) => {
   return (
@@ -44,19 +45,7 @@ export const FoodMenu = ({ data }: { data: String[] }) => {
             </Stack>
           ))}
           <Stack>
-            <Button
-              sx={{
-                width: "258px",
-                justifyContent: "start",
-                borderRadius: "8px",
-                border: "1px solid #D6D8DB",
-              }}
-            >
-              <Typography color={"#5E6166"}>
-                <AddIcon />
-                Create new category
-              </Typography>
-            </Button>
+            <CreateFood />
           </Stack>
         </Stack>
       </Stack>

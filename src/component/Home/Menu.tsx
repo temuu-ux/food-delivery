@@ -9,7 +9,7 @@ import { useFoodData } from "@/context/Context";
 const Menu = ({ category }: { category: string }) => {
   const theme = useTheme();
   const { foodData } = useFoodData();
-  // console.log("foodData", FoodData);
+  // console.log("foodData", foodData);
   // console.log("category", category);
 
   return (

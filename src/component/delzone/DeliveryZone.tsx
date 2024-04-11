@@ -1,20 +1,17 @@
 import { Container, Stack, Typography } from "@mui/material";
-
-import dynamic from "next/dynamic";
-const Map = dynamic(() => import("@/component/delzone/Map"), {
-  ssr: false,
-});
-
-const Page = () => {
+import Map from "./Map";
+export const DeliveryZone = () => {
   return (
     <Container>
-      <Stack mb={"40px"}>
+      <Stack>
         <Stack>
           <Map />
         </Stack>
         <Stack py={2} direction={"row"} alignItems={"center"}>
           {/* <GreenStar width={32} height={32} /> */}
-          <Typography variant="h2">Хүргэлтийн бүс дэх хаягууд</Typography>
+          <Typography fontWeight={700} fontSize={"22px"}>
+            Хүргэлтийн бүс дэх хаягууд
+          </Typography>
         </Stack>
         <Stack direction={"row"} justifyContent={"space-between"}>
           {/* <DeliveryCard title="А бүс" />
@@ -24,4 +21,3 @@ const Page = () => {
     </Container>
   );
 };
-export default Page;

@@ -1,10 +1,11 @@
 import { Stack, Container, Button, Typography, useTheme } from "@mui/material";
 import CardModal from "./CardModal";
 import { useState } from "react";
-import { useFoodData } from "@/context/Context";
+import { useFoodData } from "@/context/FoodContext";
 
 export const AllCard = () => {
   const { foodData } = useFoodData();
+  console.log(foodData);
   const theme = useTheme();
   const [menu, setMenu] = useState("Breakfast");
   const titleMenu = [

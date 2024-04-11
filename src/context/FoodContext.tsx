@@ -10,7 +10,7 @@ interface FoodData {
   stock: number;
 }
 
-// FoodContext iin type iin zaaf ugnu
+// FoodContext iin type iin zaaj ugnu
 interface FoodContextType {
   foodData: FoodData[];
   setFoodData: React.Dispatch<React.SetStateAction<FoodData[]>>;
@@ -26,14 +26,17 @@ export const FoodContextProvider: React.FC<{ children: React.ReactNode }> = ({
   const [foodData, setFoodData] = useState<FoodData[]>([]);
 
   useEffect(() => {
-    fetch("./FoodData.json")
-      .then((res) => res.json())
-      .then((data: FoodData[]) => {
-        setFoodData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching:", error);
-      });
+    const getData = () => {
+      fetch("../FoodData.json")
+        .then((res) => res.json())
+        .then((data: FoodData[]) => {
+          setFoodData(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching:", error);
+        });
+    };
+    getData();
   }, []);
 
   return (

@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Box, Link } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 
 export const UserDropdown = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -37,7 +37,10 @@ export const UserDropdown = () => {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        Хэрэглэгч
+        <Typography color={"#000000"} variant="subtitle1">
+          {" "}
+          Хэрэглэгч
+        </Typography>
       </Button>
       <Menu
         id="basic-menu"
@@ -51,7 +54,9 @@ export const UserDropdown = () => {
         {push.map((e, index) => {
           return (
             <Link key={index} underline="none" href={e.link}>
-              <MenuItem onClick={handleClose}>{e.title}</MenuItem>
+              <MenuItem sx={{ color: "#000000" }} onClick={handleClose}>
+                {e.title}
+              </MenuItem>
             </Link>
           );
         })}

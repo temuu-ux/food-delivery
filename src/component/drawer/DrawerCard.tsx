@@ -36,34 +36,6 @@ export const DrawerCard = () => {
     color: "#FFFFFF",
     borderRadius: "10px",
   };
-  // const data = cartData.map((e) => {
-  //   e.category;
-  //   e.count;
-  //   e.foodName;
-  //   e.id;
-  //   e.imagePath;
-  //   e.ingredients;
-  //   e.price;
-  //   e.sale;
-  //   e.stock;
-  // });
-  // const getHandler = ({ data }: { data: data }) => {
-  //   const unitData = {
-  //     category: data.category,
-  //     foodName: data.foodName,
-  //     id: data.id,
-  //     imagePath: data.imagePath,
-  //     ingredients: data.ingredients,
-  //     price: data.price,
-  //     sale: data.sale,
-  //     stock: data.stock,
-  //     count: countBuy,
-  //   };
-
-  //   setOrderData([...orderData, unitData]);
-
-  //   console.log("data", unitData);
-  // };
   const DrawerList = (
     <Box sx={{ width: 586 }} role="presentation" onClick={toggleDrawer(false)}>
       <Stack py={6} gap={10} px={6} p={4}>
@@ -166,7 +138,9 @@ export const DrawerCard = () => {
         <Badge badgeContent={cartData.length} color="primary">
           <Cart width={24} height={24} />
         </Badge>
-        <Typography variant="subtitle1">Сагс</Typography>
+        <Typography color={"#000000"} variant="subtitle1">
+          Сагс
+        </Typography>
       </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {DrawerList}

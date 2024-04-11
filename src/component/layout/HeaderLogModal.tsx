@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import { Box, Button, Link, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Profile } from "../icon/Pine";
@@ -20,7 +20,7 @@ const style = {
 };
 
 export const HeaderLogModal = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     if (chaName == "Нэвтрэх") {
       setOpen(true);
@@ -31,11 +31,12 @@ export const HeaderLogModal = () => {
   };
 
   const handleClose = () => setOpen(false);
-  const [chaName, setChaName] = React.useState("Нэвтрэх");
-  const [isInputFilled, setIsInputFilled] = React.useState(false);
+  const [chaName, setChaName] = useState("Нэвтрэх");
+  const [isInputFilled, setIsInputFilled] = useState(false);
 
   const handleChange = () => {
     setChaName("Хэрэглэгч");
+    handleClose();
   };
 
   const fontStyle = {
@@ -53,7 +54,7 @@ export const HeaderLogModal = () => {
     <Box>
       <Button onClick={handleOpen} sx={{ gap: 1 }}>
         <Profile width={18} height={18} />
-        <Typography>
+        <Typography color={"#000000"} variant="subtitle1">
           {chaName == "Нэвтрэх" ? "Нэвтрэх" : <UserDropdown />}
         </Typography>
       </Button>

@@ -1,7 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 
 import { ButtonMenu } from "./ButtonMenu";
-import { CreateFood } from "./CreateFood";
+import { CreateCategory } from "./CreateCategory";
 
 export const FoodMenu = ({ data }: { data: String[] }) => {
   return (
@@ -45,7 +45,7 @@ export const FoodMenu = ({ data }: { data: String[] }) => {
             </Stack>
           ))}
           <Stack>
-            <CreateFood />
+            <CreateCategory />
           </Stack>
         </Stack>
       </Stack>

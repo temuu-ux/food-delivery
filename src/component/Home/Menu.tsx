@@ -4,7 +4,7 @@ import * as React from "react";
 import CardModal from "../Card/CardModal";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-import { useFoodData } from "@/context/Context";
+import { useFoodData } from "@/context/FoodContext";
 
 const Menu = ({ category }: { category: string }) => {
   const theme = useTheme();

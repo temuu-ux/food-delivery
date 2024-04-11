@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "@/component/layout/Layout";
 import { CustomThemeProvider } from "@/utils/CustomTheme";
-import { FoodContextProvider } from "@/context/Context";
+import { FoodContextProvider } from "@/context/FoodContext";
 import { CartContextProvider } from "@/context/CartContext";
 import { OrderContextProvider } from "@/context/OrderContext";
 

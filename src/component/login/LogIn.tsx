@@ -39,7 +39,7 @@ const LogIn = () => {
       gap={6}
     >
       <Typography fontSize={"27px"} fontWeight={700} color={"#0D1118"}>
-        Нэвтрэхsdcsdcs
+        Нэвтрэх
       </Typography>
       <Stack gap={4} width={"384px"}>
         <FormGroup sx={{ gap: 2 }}>

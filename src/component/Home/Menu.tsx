@@ -28,7 +28,7 @@ const Menu = ({ category }: { category: string }) => {
               <Link href={"/all-card-menu"}>
                 <Button>
                   <Typography variant="h4" textAlign={"center"}>
-                    Бүгдийг харах аааа хахахах
+                    Бүгдийг 
                   </Typography>
                 </Button>
               </Link>

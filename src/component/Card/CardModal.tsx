@@ -61,12 +61,10 @@ const CardModal = ({ data }: { data: data }) => {
       stock: data.stock,
       count: countBuy,
     };
-
     setCartData([...cartData, unitData]);
     handleClose();
     // console.log("data", unitData);
   };
-
   const theme = useTheme();
   return (
     <Stack>
@@ -122,7 +120,6 @@ const CardModal = ({ data }: { data: data }) => {
               </Typography>
             </Stack>
             <Stack gap={3}>
-              {" "}
               <Typography sx={{ fontSize: theme.typography.h6 }}>
                 Орц
               </Typography>
@@ -147,7 +144,6 @@ const CardModal = ({ data }: { data: data }) => {
             </Stack>
             <Stack direction={"row"} gap={5}>
               <Box sx={box}>
-                {" "}
                 <Button
                   onClick={minusHandler}
                   sx={{
@@ -167,7 +163,6 @@ const CardModal = ({ data }: { data: data }) => {
                 {countBuy}
               </Typography>
               <Box sx={box}>
-                {" "}
                 <Button
                   onClick={() => addHandler()}
                   sx={{

@@ -33,7 +33,11 @@ export const ModalPart = () => {
     <Stack gap={6}>
       <Stack gap={2}>
         <Stack>
-          <Typography color={"#000000"} borderColor={"#ECEDF0"} sx={{ mt: 2 }}>
+          <Typography
+            color={isInputFilled ? "white" : "#000000"}
+            borderColor={"#ECEDF0"}
+            sx={{ mt: 2 }}
+          >
             Имэйл
           </Typography>
           <TextField

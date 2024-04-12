@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
   width: 28,

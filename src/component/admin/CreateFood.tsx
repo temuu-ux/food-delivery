@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Typography, Button, Box, Modal, colors } from "@mui/material";
+import { Typography, Button, Box, Modal } from "@mui/material";
 import { Stack, FormControl, OutlinedInput } from "@mui/material";
 import { CustomSwitch } from "./Switch";
 import InputLabel from "@mui/material/InputLabel";

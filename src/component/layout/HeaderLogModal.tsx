@@ -29,7 +29,7 @@ export const HeaderLogModal = () => {
       setOpen(false);
     }
   };
-
+  // asuudal
   const handleClose = () => setOpen(false);
   const [chaName, setChaName] = useState("Нэвтрэх");
   const [isInputFilled, setIsInputFilled] = useState(false);
@@ -37,6 +37,7 @@ export const HeaderLogModal = () => {
   const handleChange = () => {
     setChaName("Хэрэглэгч");
     handleClose();
+    setIsInputFilled;
   };
 
   const fontStyle = {
